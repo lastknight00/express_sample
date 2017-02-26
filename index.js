@@ -62,13 +62,30 @@ app.get('/api/selectCountryInfo', function(req, res) {
 app.get('/api/selectPartnerList', function(req, res) {
   var retval = makeResultData(
     [
-           {"partnerId":"com1", "partnerNm":"LTH Company" , "1bagBasicPrice":30, "currency":"EUR", "grade":3 }
-          ,{"partnerId":"comp2", "partnerNm":"PSI Company", "1bagBasicPrice":20, "currency":"EUR", "grade":5 }
-          ,{"partnerId":"comp3", "partnerNm":"MTI Company", "1bagBasicPrice":45, "currency":"EUR", "grade":4 }
-          ,{"partnerId":"comp4", "partnerNm":"HSR Company", "1bagBasicPrice":45, "currency":"EUR", "grade":4 }
+           {"partnerId":"com1", "partnerNm":"LTH Company" , "bagBasicPrice":30, "currency":"EUR", "grade":3 }
+          ,{"partnerId":"comp2", "partnerNm":"PSI Company", "bagBasicPrice":20, "currency":"EUR", "grade":5 }
+          ,{"partnerId":"comp3", "partnerNm":"MTI Company", "bagBasicPrice":45, "currency":"EUR", "grade":4 }
+          ,{"partnerId":"comp4", "partnerNm":"HSR Company", "bagBasicPrice":45, "currency":"EUR", "grade":4 }
       ]
   );
 
+  res.send(retval);
+});
+
+app.get('/api/selectPartnerInfo', function(req, res) {
+  var retval = makeResultData(
+    {
+        "partnerId" : "XXXX"
+        ,"partnerNm" : "XXXXXX"
+        , "1bagBasicPrice":30
+        ,"currency":"EUR"
+        ,"grade":3
+        ,"detail": [ //추가 옵션
+          {"detailId":"XXX", "detailNm":"XXXXX", "detailDescription":"detail1", "detailPrice":30}
+          ,{"detailId":"XXX", "detailNm":"XXXXX", "detailDescription":"detail2", "detailPrice":30}
+        ]
+    }
+  );
   res.send(retval);
 });
 
